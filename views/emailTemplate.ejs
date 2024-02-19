@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Job Application</title>
+   <style>
+      body {
+         font-family: Arial, sans-serif;
+         line-height: 1.6;
+         background-color: #f4f4f4;
+         margin: 0;
+         padding: 0;
+      }
+
+      .container {
+         max-width: 600px;
+         margin: 20px auto;
+         padding: 20px;
+         background: #fff;
+         border-radius: 8px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+         color: #333;
+         text-align: center;
+      }
+
+      p {
+         color: #555;
+      }
+
+      .signature {
+         margin-top: 20px;
+         font-style: italic;
+         text-align: center;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="container">
+      <h1>Job Application</h1>
+      <p>Dear <%= recruiterName %>,</p>
+      <p>I am writing to express my strong interest in the <%= postName %> position at <%= companyName %>.</p>
+      <p>Please find attached my resume for your reference.</p>
+      <p>Thank you,</p>
+      <p class="signature">R.Sarangan</p>
+   </div>
+</body>
+
+</html>
