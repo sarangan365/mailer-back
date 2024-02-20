@@ -80,7 +80,7 @@ app.post('/sendEmail', upload.single('resume'), async (req, res) => {
          companyName,
          recruiterName,
          email,
-         role: 'applied' // Assuming it's applied when the email is sent
+         postName
       });
       await application.save();
 
@@ -97,7 +97,7 @@ app.post('/sendEmail', upload.single('resume'), async (req, res) => {
 // Route to get applied jobs
 app.get('/appliedJobs', async (req, res) => {
    try {
-      const appliedJobs = await Application.find({ role: 'applied' }).exec();
+      const appliedJobs = await Application.find({}).exec();
       res.json(appliedJobs);
    } catch (error) {
       console.error('Error fetching applied jobs:', error);
