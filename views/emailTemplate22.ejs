@@ -5,32 +5,30 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Job Application</title>
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
    <style>
       body {
          font-family: 'Roboto', sans-serif;
       }
 
-      @media screen and (min-width: 768px) {
+      @media screen and (min-width:768px) {
          .Job-Outline {
             border: 1px solid gray;
             display: flex;
-            justify-content: space-between;
-            /* Center between two divs */
             width: 90%;
             background: whitesmoke;
             border-radius: 10px;
             min-height: 370px;
             margin: 0 auto;
+
          }
       }
 
       .Job-Outline {
+
          box-shadow: 0 0 5px 1px gray;
-         align-items: center;
       }
 
-      @media screen and (min-width: 0px) and (max-width: 576px) {
+      @media screen and (min-width:0px) and (max-width:576px) {
          .Job-Outline {
             width: 90%;
             margin: 0 auto;
@@ -46,7 +44,7 @@
          }
       }
 
-      @media screen and (min-width: 576px) and (max-width: 768px) {
+      @media screen and (min-width:576px) and (max-width:768px) {
          .Job-Outline {
             display: flex;
             width: 75%;
@@ -77,31 +75,28 @@
          display: flex;
          justify-content: center;
          align-items: center;
+         border-top-left-radius: 10px;
+         border-end-start-radius: 10px;
+         padding: 20px;
+
       }
 
       .responsive-img {
-         width: 294px;
-         /* Adjust width as needed */
-         height: 165px;
-         /* Adjust height as needed */
+         width: 80%;
+         aspect-ratio: 4/4 !important;
+         border-radius: 50%;
       }
    </style>
 </head>
 
 <body>
-   <div class="Job-Outline">
-      <div class="Job-image">
-         <img src="https://assets.stickpng.com/images/62bda0d7bafda8767a088b3e.png" class="responsive-img" alt="">
-      </div>
-      <div class="Job-Info">
-         <h1>Job Application</h1>
-         <hr class="line">
-         <p>Dear <%= recruiterName %>,</p>
-         <p>I am writing to express my strong interest in the <%= postName %> position at <%= companyName %>.</p>
-         <p>Please find attached my resume for your reference.</p>
-         <p>Thank you,</p>
-         <p>R.Sarangan</p>
-      </div>
+   <div class="container">
+      <h1>Job Application</h1>
+      <p>Dear <%= recruiterName %>,</p>
+      <p>I am writing to express my strong interest in the <%= postName %> position at <%= companyName %>.</p>
+      <p>Please find attached my resume for your reference.</p>
+      <p>Thank you,</p>
+      <p class="signature">R.Sarangan</p>
    </div>
 </body>
 
