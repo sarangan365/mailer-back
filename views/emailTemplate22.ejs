@@ -4,99 +4,90 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Job Application</title>
+   <title>Job Application By</title>
    <style>
       body {
-         font-family: 'Roboto', sans-serif;
+         font-family: Arial, sans-serif;
+         margin: 0;
+         padding: 0;
       }
 
-      @media screen and (min-width:768px) {
-         .Job-Outline {
-            border: 1px solid gray;
-            display: flex;
-            width: 90%;
-            background: whitesmoke;
-            border-radius: 10px;
-            min-height: 370px;
-            margin: 0 auto;
-
-         }
+      .container {
+         display: grid;
+         grid-template-columns: 30% auto;
+         grid-template-rows: 30% auto;
+         height: 100vh;
       }
 
-      .Job-Outline {
-
-         box-shadow: 0 0 5px 1px gray;
+      .logo {
+         grid-column: 1 / 2;
+         grid-row: 1 / 2;
+         background-image: url('https://assets.stickpng.com/images/62bda0d7bafda8767a088b3e.png');
+         background-size: contain;
+         background-repeat: no-repeat;
+         background-position: center;
       }
 
-      @media screen and (min-width:0px) and (max-width:576px) {
-         .Job-Outline {
-            width: 90%;
-            margin: 0 auto;
-         }
-
-         .Job-image {
-            width: 50%;
-            margin: 0 auto;
-         }
-
-         .tittle {
-            text-align: center;
-         }
+      .job-info {
+         grid-column: 1 / -1;
+         grid-row: 2 / -1;
+         padding: 20px;
       }
 
-      @media screen and (min-width:576px) and (max-width:768px) {
-         .Job-Outline {
-            display: flex;
-            width: 75%;
-            border: 1px solid gray;
-            background: whitesmoke;
-            min-height: 370px;
-            border-radius: 10px;
-            flex-direction: column;
-            margin: 0 auto;
-         }
-
-         .tittle {
-            text-align: center;
-         }
+      h1 {
+         font-size: 24px;
+         color: #333;
       }
 
       .line {
-         border: 3px solid rgb(93, 190, 93);
+         border: none;
+         height: 3px;
+         background-color: #d498ff;
+         border-radius: 50px;
+         margin: 20px 0;
       }
 
-      .Job-Info {
-         flex-grow: 3 !important;
-         padding: 5px 23px;
+      p {
+         font-size: 16px;
+         line-height: 1.6;
+         color: #666;
       }
 
-      .Job-image {
-         flex-grow: 1 !important;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         border-top-left-radius: 10px;
-         border-end-start-radius: 10px;
-         padding: 20px;
+      @media (max-width: 768px) {
+         .container {
+            grid-template-columns: 100%;
+            grid-template-rows: 30% auto;
+         }
 
-      }
+         .logo {
+            grid-column: 1 / -1;
+            grid-row: 1 / 2;
+         }
 
-      .responsive-img {
-         width: 80%;
-         aspect-ratio: 4/4 !important;
-         border-radius: 50%;
+         .job-info {
+            grid-column: 1 / -1;
+            grid-row: 2 / -1;
+         }
       }
    </style>
 </head>
 
 <body>
    <div class="container">
-      <h1>Job Application</h1>
-      <p>Dear <%= recruiterName %>,</p>
-      <p>I am writing to express my strong interest in the <%= postName %> position at <%= companyName %>.</p>
-      <p>Please find attached my resume for your reference.</p>
-      <p>Thank you,</p>
-      <p class="signature">R.Sarangan</p>
+      <div class="logo"></div>
+      <div class="job-info">
+         <h1>Job Application</h1>
+         <hr class="line">
+         <p>Dear <%= recruiterName %>,</p>
+         <p>I hope this email finds you well. I am writing to express my strong interest in the <%=postName%> position
+               at <%= companyName %>, as advertised on LinkedIn. With my extensive experience in MERN stack development
+                  and a
+                  proven track record of delivering high-quality web applications, I am excited about the opportunity to
+                  contribute to your team.</p>
+         <p>Please find attached my resume for your reference.</p>
+         <p>Thank you,</p>
+         <p>R.Sarangan</p>
+      </div>
    </div>
 </body>
 

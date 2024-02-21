@@ -6,6 +6,7 @@ const applicationSchema = new mongoose.Schema({
    recruiterName: { type: String, required: true },
    email: { type: String, required: true },
    postName: { type: String, required: true },
+   applicantName: { type: String, required: true },
    status: { type: String, enum: ['applied', 'contacted', 'rejected', 'selected'], default: 'applied' },
    createdDate: { type: Date, default: Date.now }
 });
