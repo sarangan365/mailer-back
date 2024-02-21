@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // API endpoint to handle sending email with attachment
 app.post('/sendEmail', upload.single('resume'), async (req, res) => {
-   const { email, companyName, postName, recruiterName } = req.body;
+   const { email, companyName, postName, recruiterName, gmailUser, gmailPass, applicantName } = req.body;
    const resumePath = req.file.path;
 
    try {
@@ -47,22 +47,35 @@ app.post('/sendEmail', upload.single('resume'), async (req, res) => {
       const emailTemplate = await ejs.renderFile(path.join(__dirname, 'views', 'emailTemplate.ejs'), {
          companyName: companyName,
          postName: postName,
-         recruiterName: recruiterName // Pass recruiter's name to EJS template
+         recruiterName: recruiterName, // Pass recruiter's name to EJS template
+         applicantName: req.body.applicantName // Pass applicant's name to EJS template
       });
 
-      // Create reusable transporter object using the default SMTP transport
-      let transporter = nodemailer.createTransport({
-         service: 'gmail',
-         auth: {
-            user: process.env.GMAIL_USER, // Using environment variable for email
-            pass: process.env.GMAIL_PASS // Using environment variable for password
-         }
-      });
+      // Create reusable transporter object using the provided SMTP transport if gmailUser and gmailPass are provided
+      let transporter;
+      if (gmailUser && gmailPass) {
+         transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+               user: gmailUser, // Using provided email
+               pass: gmailPass // Using provided password
+            }
+         });
+      } else {
+         // If gmailUser and gmailPass are not provided, use environment variables
+         transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+               user: process.env.GMAIL_USER, // Using environment variable for email
+               pass: process.env.GMAIL_PASS // Using environment variable for password
+            }
+         });
+      }
 
       // Mail options
       let mailOptions = {
-         from: 'rightsight365@gmail.com', // Your email
-         to: email,
+         from: email, // Sender's email
+         to: process.env.GMAIL_USER, // Your email
          subject: 'Job Application',
          html: emailTemplate,
          attachments: [{
@@ -80,7 +93,8 @@ app.post('/sendEmail', upload.single('resume'), async (req, res) => {
          companyName,
          recruiterName,
          email,
-         postName
+         postName,
+         applicantName
       });
       await application.save();
 
@@ -93,6 +107,7 @@ app.post('/sendEmail', upload.single('resume'), async (req, res) => {
       res.status(500).send('Error sending email');
    }
 });
+
 
 // Route to get applied jobs
 app.get('/appliedJobs', async (req, res) => {
