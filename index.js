@@ -75,7 +75,7 @@ app.post('/sendEmail', upload.single('resume'), async (req, res) => {
       // Mail options
       let mailOptions = {
          from: process.env.GMAIL_USER, // Sender's email
-         to: email, // Your email
+         to: email, // Recipient email
          subject: 'Job Application',
          html: emailTemplate,
          attachments: [{
